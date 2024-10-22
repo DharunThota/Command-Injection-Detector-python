@@ -11,7 +11,8 @@ class CommandInjectionDetector(ast.NodeVisitor):
             'subprocess.Popen': "Avoid using 'shell=True'. Use 'subprocess.run()' or 'subprocess.Popen()' with a list of arguments.",
             'os.popen': "Avoid using 'os.popen'. Use 'subprocess.run()' with a list of arguments for safety.",
             'eval': "Avoid using 'eval()' as it can execute arbitrary code. Consider using 'ast.literal_eval()' for parsing literals or ensure input is validated and sanitized.",
-            'exec': "Avoid using 'exec()' as it can execute arbitrary code. Consider refactoring your code to eliminate the need for 'exec()'."
+            'exec': "Avoid using 'exec()' as it can execute arbitrary code. Consider refactoring your code to eliminate the need for 'exec()'.",
+            'subprocess.check_output': "Avoid using 'shell=True'. Use a list of arguments instead of a string to run commands."
         }
         self.vulnerabilities = []
         self.safe_usages = []  # Track cases where shlex.split() is used
